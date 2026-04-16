@@ -1,23 +1,37 @@
-export interface Verse {
-  number: number;
-  text: string;    // English translation
+export interface VerseSide {
+  verse: number | string;
+  text: string;
   arabic: string;
+  theme: string;
 }
 
 export interface RingPair {
-  label: string;   // e.g. "A"
-  color: string;   // hex color for this ring tier
-  theme: string;   // scholarly theme
-  a: { verse: string; note: string };
-  b: { verse: string; note: string };
+  a: VerseSide;
+  b: VerseSide;
+}
+
+export interface Ring {
+  level: number;
+  label: string;
+  color: string;
+  pairs: RingPair[];
 }
 
 export interface RingSurah {
-  id: number;
+  key: string;
   name: string;
   arabic: string;
-  center: { verse: string; label: string };
-  rings: RingPair[];
+  number: number;
+  totalVerses: number;
+  center: { verse: number | string; label: string };
+  rings: Ring[];
+}
+
+// For live verse fetching
+export interface FetchedVerse {
+  number: number;
+  arabic: string;
+  text: string;
 }
 
 export interface SurahMeta {

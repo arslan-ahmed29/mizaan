@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { SurahMeta, Verse } from "../types";
+import type { FetchedVerse, SurahMeta } from "../types";
 
 const BASE = "https://api.quran.com/api/v4";
 const TRANSLATION_ID = 131; // Sahih International
@@ -34,8 +34,8 @@ interface VersesResponse {
   pagination: { next_page: number | null };
 }
 
-export async function fetchSurahVerses(surahId: number): Promise<Verse[]> {
-  const all: Verse[] = [];
+export async function fetchSurahVerses(surahId: number): Promise<FetchedVerse[]> {
+  const all: FetchedVerse[] = [];
   let page = 1;
 
   while (true) {
@@ -53,11 +53,9 @@ export async function fetchSurahVerses(surahId: number): Promise<Verse[]> {
     );
 
     for (const v of data.verses) {
-      all.push({
-        number: v.verse_number,
-        arabic: v.text_uthmani,
-        text: v.translations?.[0]?.text ?? "",
-      });
+      // Strip HTML tags from translation
+      const text = v.translations?.[0]?.text?.replace(/<[^>]+>/g, "") ?? "";
+      all.push({ number: v.verse_number, arabic: v.text_uthmani, text });
     }
 
     if (data.pagination.next_page === null) break;
@@ -70,17 +68,12 @@ export async function fetchSurahVerses(surahId: number): Promise<Verse[]> {
 export async function fetchVerse(
   surahId: number,
   verseNumber: number
-): Promise<Verse> {
+): Promise<FetchedVerse> {
   const { data } = await http.get<{ verse: VerseItem }>(
     `/verses/by_key/${surahId}:${verseNumber}`,
-    {
-      params: { language: "en", translations: TRANSLATION_ID, fields: "text_uthmani" },
-    }
+    { params: { language: "en", translations: TRANSLATION_ID, fields: "text_uthmani" } }
   );
   const v = data.verse;
-  return {
-    number: v.verse_number,
-    arabic: v.text_uthmani,
-    text: v.translations?.[0]?.text ?? "",
-  };
+  const text = v.translations?.[0]?.text?.replace(/<[^>]+>/g, "") ?? "";
+  return { number: v.verse_number, arabic: v.text_uthmani, text };
 }

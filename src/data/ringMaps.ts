@@ -1,149 +1,314 @@
 import type { RingSurah } from "../types";
 
-// Ring colors per tier (outermost → innermost before center)
-const RING_COLORS = [
-  "#7B4F2E", // tier 1 outermost – warm brown
-  "#A0673A", // tier 2
-  "#C8A97E", // tier 3 – gold
-  "#E8CFAB", // tier 4 – light gold
-];
+export const SURAHS: Record<string, RingSurah> = {
 
-export const RING_MAPS: Record<number, RingSurah> = {
-
-  // ── Al-Fatiha (1) ─────────────────────────────────────────────────────────
-  1: {
-    id: 1,
+  fatiha: {
+    key: "fatiha",
     name: "Al-Fatiha",
     arabic: "الفاتحة",
+    number: 1,
+    totalVerses: 7,
     center: {
-      verse: "1:4",
-      label: "X",
+      verse: 4,
+      label: "You alone we worship, You alone we ask for help",
     },
     rings: [
       {
+        level: 1,
         label: "A",
-        color: RING_COLORS[0],
-        theme: "Divine Names and Mercy",
-        a: { verse: "1:1", note: "In the name of Allah, the Most Gracious, the Most Merciful" },
-        b: { verse: "1:7", note: "Not of those who go astray" },
+        color: "#C8A97E",
+        pairs: [
+          {
+            a: {
+              verse: 1,
+              arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+              text: "In the name of Allah, the Most Gracious, the Most Merciful",
+              theme: "Divine Names & Mercy",
+            },
+            b: {
+              verse: 7,
+              arabic: "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
+              text: "The path of those You have blessed — not of those who earned anger, nor of those who went astray",
+              theme: "Divine Names & Mercy",
+            },
+          },
+        ],
       },
       {
+        level: 2,
         label: "B",
-        color: RING_COLORS[1],
-        theme: "Allah's Lordship and Guidance",
-        a: { verse: "1:2", note: "Praise be to Allah, Lord of the Worlds" },
-        b: { verse: "1:6", note: "Guide us to the straight path" },
+        color: "#8FB4A8",
+        pairs: [
+          {
+            a: {
+              verse: 2,
+              arabic: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+              text: "All praise is for Allah, Lord of all worlds",
+              theme: "Allah's Lordship",
+            },
+            b: {
+              verse: 6,
+              arabic: "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ",
+              text: "Guide us to the straight path",
+              theme: "Allah's Lordship",
+            },
+          },
+        ],
       },
       {
+        level: 3,
         label: "C",
-        color: RING_COLORS[2],
-        theme: "Mercy and Judgment",
-        a: { verse: "1:3", note: "The Most Gracious, the Most Merciful" },
-        b: { verse: "1:5", note: "You alone we worship, You alone we ask for help" },
+        color: "#7A9BBF",
+        pairs: [
+          {
+            a: {
+              verse: 3,
+              arabic: "الرَّحْمَٰنِ الرَّحِيمِ",
+              text: "The Most Gracious, the Most Merciful",
+              theme: "Mercy of Allah",
+            },
+            b: {
+              verse: 5,
+              arabic: "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
+              text: "You alone we worship, You alone we ask for help",
+              theme: "Mercy of Allah",
+            },
+          },
+        ],
       },
     ],
   },
 
-  // ── Al-Baqarah (2) ────────────────────────────────────────────────────────
-  2: {
-    id: 2,
+  baqarah: {
+    key: "baqarah",
     name: "Al-Baqarah",
     arabic: "البقرة",
+    number: 2,
+    totalVerses: 286,
     center: {
-      verse: "2:142–152",
-      label: "X",
+      verse: "142–152",
+      label: "The Qibla — Direction of Worship",
     },
     rings: [
       {
+        level: 1,
         label: "A",
-        color: RING_COLORS[0],
-        theme: "Faith vs Disbelief / Spending in Allah's Way",
-        a: { verse: "2:1–20", note: "Introduction: believers, disbelievers, hypocrites" },
-        b: { verse: "2:261–286", note: "Charity, usury, and closing prayer of believers" },
+        color: "#C8A97E",
+        pairs: [
+          {
+            a: {
+              verse: "1–20",
+              arabic: "الم ذَٰلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ",
+              text: "Faith vs. Disbelief — the three groups: believers, disbelievers, hypocrites",
+              theme: "Faith & Disbelief",
+            },
+            b: {
+              verse: "261–286",
+              arabic: "مَثَلُ الَّذِينَ يُنفِقُونَ أَمْوَالَهُمْ فِي سَبِيلِ اللَّهِ",
+              text: "Spending in Allah's way — true faith expressed through action and charity",
+              theme: "Faith & Disbelief",
+            },
+          },
+        ],
       },
       {
+        level: 2,
         label: "B",
-        color: RING_COLORS[1],
-        theme: "Creation and Divine Dominion",
-        a: { verse: "2:21–39", note: "Creation of Adam, temptation, expulsion from Eden" },
-        b: { verse: "2:254–260", note: "Āyat al-Kursī – Allah's throne and dominion" },
+        color: "#8FB4A8",
+        pairs: [
+          {
+            a: {
+              verse: "21–39",
+              arabic: "يَا أَيُّهَا النَّاسُ اعْبُدُوا رَبَّكُمُ",
+              text: "Allah's power in creation — the first humans, the covenant with Adam",
+              theme: "Creation & Divine Power",
+            },
+            b: {
+              verse: "254–260",
+              arabic: "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ",
+              text: "Āyat al-Kursī — Allah's absolute dominion; His Kursi extends over the heavens and earth",
+              theme: "Creation & Divine Power",
+            },
+          },
+        ],
       },
       {
+        level: 3,
         label: "C",
-        color: RING_COLORS[2],
-        theme: "Children of Israel / Laws for Muslim Community",
-        a: { verse: "2:40–103", note: "Banī Isrā'īl – covenant, violations, golden calf" },
-        b: { verse: "2:178–253", note: "Qisas, fasting, pilgrimage, jihad legislation" },
+        color: "#7A9BBF",
+        pairs: [
+          {
+            a: {
+              verse: "40–103",
+              arabic: "يَا بَنِي إِسْرَائِيلَ اذْكُرُوا نِعْمَتِيَ الَّتِي أَنْعَمْتُ عَلَيْكُمْ",
+              text: "Story of Banī Isrāʾīl — their covenant, trials, and repeated breaking of promises",
+              theme: "Covenant & Community",
+            },
+            b: {
+              verse: "178–253",
+              arabic: "يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الْقِصَاصُ",
+              text: "Laws for the Muslim community — building a covenant society (Qisas, fasting, Hajj, Jihad)",
+              theme: "Covenant & Community",
+            },
+          },
+        ],
       },
       {
+        level: 4,
         label: "D",
-        color: RING_COLORS[3],
-        theme: "Ibrahim and the Ka'bah",
-        a: { verse: "2:104–141", note: "Ibrahim as true faith model; rebuke of Jewish/Christian claims" },
-        b: { verse: "2:153–177", note: "Return to Ibrahim; Hajj, patience, and righteousness" },
+        color: "#A78BBF",
+        pairs: [
+          {
+            a: {
+              verse: "104–141",
+              arabic: "مَا كَانَ إِبْرَاهِيمُ يَهُودِيًّا وَلَا نَصْرَانِيًّا",
+              text: "Ibrahim and the Kaʿbah — the original Qibla, the father of monotheism",
+              theme: "Ibrahim & Sacred Direction",
+            },
+            b: {
+              verse: "153–177",
+              arabic: "إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ",
+              text: "Return to Ibrahim — Hajj, sacrifice, and the straight path re-established",
+              theme: "Ibrahim & Sacred Direction",
+            },
+          },
+        ],
       },
     ],
   },
 
-  // ── Al-Ikhlas (112) ───────────────────────────────────────────────────────
-  112: {
-    id: 112,
+  ikhlas: {
+    key: "ikhlas",
     name: "Al-Ikhlas",
     arabic: "الإخلاص",
+    number: 112,
+    totalVerses: 4,
     center: {
-      verse: "112:1–2",
-      label: "X",
+      verse: 2,
+      label: "Allah is the Eternal Refuge — Al-Samad",
     },
     rings: [
       {
+        level: 1,
         label: "A",
-        color: RING_COLORS[0],
-        theme: "Allah is One / None is Equal to Him",
-        a: { verse: "112:1", note: "Say: He is Allah, the One" },
-        b: { verse: "112:4", note: "There is none comparable to Him" },
+        color: "#C8A97E",
+        pairs: [
+          {
+            a: {
+              verse: 1,
+              arabic: "قُلْ هُوَ اللَّهُ أَحَدٌ",
+              text: "Say: He is Allah, the One",
+              theme: "Absolute Oneness",
+            },
+            b: {
+              verse: 4,
+              arabic: "وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ",
+              text: "And there is none comparable to Him",
+              theme: "Absolute Oneness",
+            },
+          },
+        ],
       },
       {
+        level: 2,
         label: "B",
-        color: RING_COLORS[1],
-        theme: "Eternal / Beyond Birth and Generation",
-        a: { verse: "112:2", note: "Allah is the Eternal Refuge (Al-Samad)" },
-        b: { verse: "112:3", note: "He neither begets nor was begotten" },
+        color: "#8FB4A8",
+        pairs: [
+          {
+            a: {
+              verse: 2,
+              arabic: "اللَّهُ الصَّمَدُ",
+              text: "Allah is the Eternal Refuge (Al-Samad) — all depend on Him",
+              theme: "Eternal & Self-Sufficient",
+            },
+            b: {
+              verse: 3,
+              arabic: "لَمْ يَلِدْ وَلَمْ يُولَدْ",
+              text: "He neither begets nor was begotten",
+              theme: "Eternal & Self-Sufficient",
+            },
+          },
+        ],
       },
     ],
   },
 
-  // ── Al-Nas (114) ──────────────────────────────────────────────────────────
-  114: {
-    id: 114,
+  nas: {
+    key: "nas",
     name: "Al-Nas",
     arabic: "الناس",
+    number: 114,
+    totalVerses: 6,
     center: {
-      verse: "114:3–4",
-      label: "X",
+      verse: "3–4",
+      label: "God of mankind — seeking refuge in Allah alone",
     },
     rings: [
       {
+        level: 1,
         label: "A",
-        color: RING_COLORS[0],
-        theme: "Lord of Mankind / Protection from Jinn and Men",
-        a: { verse: "114:1", note: "Say: I seek refuge with the Lord of mankind" },
-        b: { verse: "114:6", note: "From among jinn and mankind" },
+        color: "#C8A97E",
+        pairs: [
+          {
+            a: {
+              verse: 1,
+              arabic: "قُلْ أَعُوذُ بِرَبِّ النَّاسِ",
+              text: "Say: I seek refuge with the Lord of mankind",
+              theme: "Lord of Mankind",
+            },
+            b: {
+              verse: 6,
+              arabic: "مِنَ الْجِنَّةِ وَالنَّاسِ",
+              text: "From among the jinn and mankind",
+              theme: "Lord of Mankind",
+            },
+          },
+        ],
       },
       {
+        level: 2,
         label: "B",
-        color: RING_COLORS[1],
-        theme: "King of Mankind / Whispers in the Hearts",
-        a: { verse: "114:2", note: "The King of mankind" },
-        b: { verse: "114:5", note: "Who whispers in the hearts of mankind" },
+        color: "#8FB4A8",
+        pairs: [
+          {
+            a: {
+              verse: 2,
+              arabic: "مَلِكِ النَّاسِ",
+              text: "The King of mankind",
+              theme: "Sovereignty & Protection",
+            },
+            b: {
+              verse: 5,
+              arabic: "الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ",
+              text: "Who whispers in the hearts of mankind",
+              theme: "Sovereignty & Protection",
+            },
+          },
+        ],
       },
     ],
   },
 };
 
-export function getRingMap(surahId: number): RingSurah | null {
-  return RING_MAPS[surahId] ?? null;
+export function getRingMap(key: string): RingSurah | undefined {
+  return SURAHS[key];
 }
 
-export function getMappedSurahIds(): number[] {
-  return Object.keys(RING_MAPS).map(Number);
+// Returns which ring label owns a given verse number (for proof section)
+export function getVerseRingLabel(
+  surah: RingSurah,
+  verseNum: number
+): { label: string; color: string; side: "a" | "b" | "center" } | null {
+  if (verseNum === Number(surah.center.verse)) {
+    return { label: "X", color: "#C8A97E", side: "center" };
+  }
+  for (const ring of surah.rings) {
+    for (const pair of ring.pairs) {
+      const av = Number(pair.a.verse);
+      const bv = Number(pair.b.verse);
+      if (av === verseNum) return { label: ring.label, color: ring.color, side: "a" };
+      if (bv === verseNum) return { label: `${ring.label}′`, color: ring.color, side: "b" };
+    }
+  }
+  return null;
 }
