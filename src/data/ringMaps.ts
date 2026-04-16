@@ -37,7 +37,7 @@ export const SURAHS: Record<string, RingSurah> = {
       {
         level: 2,
         label: "B",
-        color: "#8FB4A8",
+        color: "#B8955A",
         pairs: [
           {
             a: {
@@ -58,7 +58,7 @@ export const SURAHS: Record<string, RingSurah> = {
       {
         level: 3,
         label: "C",
-        color: "#7A9BBF",
+        color: "#A07840",
         pairs: [
           {
             a: {
@@ -114,7 +114,7 @@ export const SURAHS: Record<string, RingSurah> = {
       {
         level: 2,
         label: "B",
-        color: "#8FB4A8",
+        color: "#B8955A",
         pairs: [
           {
             a: {
@@ -135,7 +135,7 @@ export const SURAHS: Record<string, RingSurah> = {
       {
         level: 3,
         label: "C",
-        color: "#7A9BBF",
+        color: "#A07840",
         pairs: [
           {
             a: {
@@ -156,7 +156,7 @@ export const SURAHS: Record<string, RingSurah> = {
       {
         level: 4,
         label: "D",
-        color: "#A78BBF",
+        color: "#D4AA70",
         pairs: [
           {
             a: {
@@ -212,7 +212,7 @@ export const SURAHS: Record<string, RingSurah> = {
       {
         level: 2,
         label: "B",
-        color: "#8FB4A8",
+        color: "#B8955A",
         pairs: [
           {
             a: {
@@ -268,7 +268,7 @@ export const SURAHS: Record<string, RingSurah> = {
       {
         level: 2,
         label: "B",
-        color: "#8FB4A8",
+        color: "#B8955A",
         pairs: [
           {
             a: {
